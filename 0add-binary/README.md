@@ -1,6 +1,6 @@
 <h2>  Add Binary</h2><hr><div><p>Given two binary strings <code>a</code> and <code>b</code>, return <em>their sum as a binary string</em>.</p>
 
-<p>&nbsp;</p>
+<p>&nbsp; </p>
 <p><strong class="example">Example 1:</strong></p>
 <pre><strong>Input:</strong> a = "11", b = "1"
 <strong>Output:</strong> "100"
