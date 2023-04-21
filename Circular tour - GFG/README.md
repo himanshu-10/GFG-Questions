@@ -6,7 +6,7 @@
 Find a starting point where the truck can start to get through the complete circle without exhausting its petrol in between.</span><br>
 <span style="font-size:18px"><strong>Note :</strong>&nbsp;&nbsp;Assume for 1 litre petrol, the truck can go 1 unit of distance.</span></p>
 
-<p><span style="font-size:18px"><strong>Example 1:</strong></span></p>
+<p> <span style="font-size:18px"><strong>Example 1:</strong></span></p>
 
 <pre><span style="font-size:18px"><strong>Input:
 </strong>N = 4
@@ -33,4 +33,5 @@ Your task is to complete the&nbsp;function <strong>tour</strong>() which takes t
 1 ≤&nbsp;petrol, distance ≤&nbsp;1000</span></p>
 
 <p>&nbsp;</p>
+<br>
 </div>
