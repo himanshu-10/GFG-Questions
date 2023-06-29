@@ -12,19 +12,27 @@
 class Solution {
 public:
     bool isSameTree(TreeNode* p, TreeNode* q) {
-         // If both p and q are null, return true
-        if (p == nullptr && q == nullptr) {
+        
+        
+        // basecase 
+        if( p == NULL && q == NULL)
             return true;
-        }
-        // If one of p or q is null, return false
-        if (p == nullptr || q == nullptr) {
+        if(p == NULL && q != NULL)
+            return false;
+        if(p!= NULL && q == NULL)
+            return false;
+        
+        // both are not null
+        bool left = isSameTree(p -> left , q -> left);
+        bool right = isSameTree(p -> right , q -> right);
+        
+        bool nodeVal = p -> val == q -> val;
+        
+        if(left && right && nodeVal){
+            return true;
+        }else{
             return false;
         }
-        // If the values at p and q are not equal, return false
-        if (p->val != q->val) {
-            return false;
-        }
-        // Recursively check if the left and right subtrees of p and q are the same
-        return isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
+        
     }
 };
