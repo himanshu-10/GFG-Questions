@@ -25,22 +25,37 @@ private:
         return ans;
     }
 public:
-    bool isBalanced(TreeNode* root) {
+    
+    pair<bool,int> isBalancedFast(TreeNode* root){
         
-        // basecase
+         // basecase
         if(root == NULL){
-            return true;
+            pair<bool,int> p = make_pair(true,0);
+            return p;
         }
         
-        bool left = isBalanced(root -> left);
-        bool right = isBalanced(root -> right);
+        // iteration recursively
+        pair<int,int> left = isBalancedFast(root -> left);
+        pair<int,int> right = isBalancedFast(root -> right);
         
-        bool diff = abs(height(root -> left) - height(root -> right)) <= 1;
         
-        if(left && right && diff){
-            return true;
+        bool leftans = left.first;
+        bool rightans = right.first;
+        
+        bool diff = abs(left.second - right.second) <= 1;
+        
+        pair<bool,int>ans;
+        ans.second = max(left.second, right.second)+1;
+        
+        if(leftans && rightans && diff){
+            ans.first = true;
         }else{
-            return false;
+           ans.first = false;
         }
+        return ans;
+    }
+    bool isBalanced(TreeNode* root) {
+        return isBalancedFast(root).first;
+      
     }
 };
