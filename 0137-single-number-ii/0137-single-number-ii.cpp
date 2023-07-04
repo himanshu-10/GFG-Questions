@@ -3,9 +3,13 @@ public:
     int singleNumber(vector<int>& nums) {
         map<int,int>m;
         int ans;
+        int n = nums.size();
         for(int i = 0; i< nums.size();i++){
             m[nums[i]]++;
+            
+            
         }
+     
         
         for(int i = 0; i<nums.size();i++){
             int key = nums[i];
