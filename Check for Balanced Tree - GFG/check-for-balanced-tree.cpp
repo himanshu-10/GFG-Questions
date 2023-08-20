@@ -115,20 +115,46 @@ class Solution{
         
         return max(leftHeight,rightHeight) +1;
     }
+    
+    pair<bool,int>helper(Node* root){
+        
+        // base case
+        if(root == NULL){
+            pair<bool,int>p = make_pair(true,0);
+            return p;
+        }
+        
+        pair<bool,int>left = helper(root -> left);
+        pair<bool,int>right = helper(root -> right);
+        
+        bool op1 = left.first;
+        bool op2 = right.first;
+        bool op3 = abs(left.second - right.second) <= 1 ? true : false;
+        
+        pair<bool,int>ans;
+        ans.first = (op1 && op2 && op3) == 1 ? true : false;
+        ans.second = max(left.second,right.second)+1;
+        
+        return ans;
+        
+        
+    }
     bool isBalanced(Node *root)
     {
-       if(root == NULL)
-        return true;
+    //   if(root == NULL)
+    //     return true;
         
-        bool op1 = isBalanced(root -> left);
-        bool op2 = isBalanced(root -> right);
-        bool op3 = abs(height(root -> left) - height(root -> right)) <= 1 ? true : false;
+    //     bool op1 = isBalanced(root -> left);
+    //     bool op2 = isBalanced(root -> right);
+    //     bool op3 = abs(height(root -> left) - height(root -> right)) <= 1 ? true : false;
         
-        if(op1 && op2 && op3){
-            return 1;
-        }else{
-            return 0;
-        }
+    //     if(op1 && op2 && op3){
+    //         return 1;
+    //     }else{
+    //         return 0;
+    //     }
+    
+        return helper(root).first;
     }
 };
 
