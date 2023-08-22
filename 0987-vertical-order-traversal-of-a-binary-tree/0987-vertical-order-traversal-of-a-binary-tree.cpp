@@ -28,8 +28,8 @@ public:
         q.push({root,{0,0}});
         
         while(!q.empty()){
-            int n = q.size();
-            while(n--){
+            
+            
                 auto temp = q.front();
                 q.pop();
                 
@@ -44,7 +44,7 @@ public:
                 if(frontNode -> right)
                     q.push({frontNode -> right,{level+1,hd+1}});
                 
-            }
+            
         }
         
         for(auto i: nodes){
