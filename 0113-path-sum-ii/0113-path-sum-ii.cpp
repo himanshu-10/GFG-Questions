@@ -20,7 +20,11 @@ public:
         
         path.push_back(root -> val);
         
-          if(root->left == NULL && root->right==NULL){
+        solve(root -> left,targetSum,res,path);
+        solve(root -> right,targetSum,res,path);
+        
+        
+        if(root->left == NULL && root->right==NULL){
             long int sum = 0;
             int size = path.size();
             for(int i = size-1 ; i >=0 ; i--){
@@ -30,19 +34,11 @@ public:
                 res.push_back(path);
         }
         
-//         // recursive call
-        solve(root -> left,targetSum,res,path);
-        solve(root -> right,targetSum,res,path);
+       // recursive call
+//         solve(root -> left,targetSum,res,path);
+//         solve(root -> right,targetSum,res,path);
         
-//         // calculation
-//         int sum = 0;
-//         // int size = path.size();
-//         for(int i = 0;i<path.size();i++){
-//             sum+=path[i];
-//             if(sum == targetSum)
-//                 res.push_back(path);
-//         }
-        
+
         path.pop_back();
         
         
