@@ -21,7 +21,7 @@ public:
         return -1;
     }
     
-    TreeNode* solve(vector<int> preorder, vector<int> inorder, int &index, int inorderStart,int inorderEnd){
+    TreeNode* solve(vector<int> preorder, vector<int> inorder, int &index, int inorderStart,int                                                                 inorderEnd,unordered_map<int,int>&m){
             
         // base case
         if(index > preorder.size() ){
@@ -36,11 +36,12 @@ public:
         // make root
         TreeNode* root = new TreeNode(element);
         // find position of root in inorder
-        int position = findPos(inorder,element);
+        // int position = findPos(inorder,element);
+        int position = m[root -> val];
         
         // recursive call
-        root -> left = solve(preorder,inorder,index,inorderStart,position-1);
-        root -> right = solve(preorder,inorder,index,position+1,inorderEnd);
+        root -> left = solve(preorder,inorder,index,inorderStart,position-1,m);
+        root -> right = solve(preorder,inorder,index,position+1,inorderEnd,m);
         
         return root;
         
@@ -48,8 +49,15 @@ public:
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
        
         int preOrderIndex = 0;
+        
+        // mapp the element in inoreder with its index
+        unordered_map<int,int>m;
+        for(int i = 0;i<inorder.size();i++){
+            m[inorder[i]] = i;
+        }
+        
         // preorder - inorder - preorderindex - startIndexOfInorder - endIndexOfInorder
-        TreeNode*ans = solve(preorder, inorder, preOrderIndex, 0, inorder.size()-1);
+        TreeNode*ans = solve(preorder, inorder, preOrderIndex, 0, inorder.size()-1,m);
         return ans;
     }
 };
