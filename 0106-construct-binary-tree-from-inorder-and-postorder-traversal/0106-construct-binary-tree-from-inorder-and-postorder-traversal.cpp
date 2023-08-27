@@ -30,7 +30,7 @@ public:
         // find that element in inorder
         int position = m[root -> val];
         
-        // recursive call
+        // ************* recursive call [RIGHT,LEFT] *********************************
         root -> right = solve(inorder, postorder, index, position +1,inEnd, m);
         root -> left = solve(inorder, postorder, index, inStart, position-1, m);
         
